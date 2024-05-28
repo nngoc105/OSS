@@ -3,7 +3,7 @@
 <suite name="Suite" verbose="1">
     <test name="First Test">
         <classes>
-            <class name="com.autotest.loginShop"></class>
+            <class name="com.autotest.job_creation"></class>
         </classes>
     </test>
 </suite>

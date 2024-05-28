@@ -8,14 +8,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.annotations.AfterMethod;
+
 import java.time.Duration;
 
-import java.util.List;
-
-public class loginShop {
+public class job_creation {
     private WebDriver driver;
     @Test
     public void login() {
@@ -47,15 +44,39 @@ public class loginShop {
         //Input form
 
         driver.findElement(By.xpath("//input[@id='job_group_title']")).sendKeys("Auto JG 1");
-        WebElement executeMonth = driver.findElement(By.xpath("//div[@class='col-4']//span[@role='combobox']"));
+        WebElement executeYear = driver.findElement(By.xpath("//*[@id=\"execute_month_year\"]"));
+        Select selectYear = new Select(executeYear);
+        selectYear.selectByIndex(1);
+
+        WebElement executeMonth = driver.findElement(By.xpath("//*[@id=\"execute_month_month\"]"));
         Select selectMonth = new Select(executeMonth);
         selectMonth.selectByIndex(1);
-
-        WebElement executeDay = driver.findElement(By.xpath("(//span[@aria-expanded='true'])[1]"));
-        Select selectDay = new Select(executeDay);
-        selectDay.selectByIndex(1);
         
-        //Close Window
-        driver.quit();
+        WebElement groupManager = driver.findElement(By.xpath("//*[@id=\"assignees\"]"));
+        Select selectManager = new Select(groupManager);
+        selectManager.selectByVisibleText("Tester Voy");
+
+        //Add job
+        driver.findElement(By.xpath("//*[@id=\"addForm\"]/div[1]/div/div[10]/div[1]/a")).click();
+        WebElement jobTemplate = driver.findElement(By.xpath("//*[@id=\"template_selection\"]"));
+        Select selectTemplate = new Select(jobTemplate);
+        selectTemplate.selectByIndex(9);
+        driver.findElement(By.xpath("//*[@id=\"single-job-title\"]")).sendKeys("AJ - T9");
+        //Set reflect time
+        driver.findElement(By.xpath("//*[@id=\"single-job-basic-info\"]/div[2]/div[2]/div[3]/div/button")).click();
+        //Set Product
+        driver.findElement(By.xpath("//*[@id=\"single-job-basic-info\"]/div[4]/div[2]/div/div[2]/label/span")).click();
+        driver.findElement(By.xpath("//*[@id=\"single-job-item-urls\"]")).sendKeys("mac200000");
+
+
+        //Autocreate Task
+        driver.findElement(By.xpath("//*[@id=\"single-job-basic-info\"]/div[7]/div[2]/div[3]/label/span")).click();
+
+        //Create job
+        driver.findElement(By.xpath("//*[@id=\"addForm\"]/div[2]/div/div/button")).click();
+
+
+
+
     }
 }

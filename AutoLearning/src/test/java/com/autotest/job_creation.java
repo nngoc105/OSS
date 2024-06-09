@@ -1,9 +1,6 @@
 package com.autotest;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -37,7 +34,6 @@ public class job_creation {
         driver.findElement(By.xpath("//div[@title='Voyager']")).click();
         WebDriverWait shopLoading = new WebDriverWait(driver, Duration.ofSeconds(5));
         shopLoading.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//a[@class='nav-link nav-item not-link'])[1]")));
-
         //Create Job Group
         driver.findElement(By.xpath("//a[@class='btn btn-info btn-info-custom px-lg-3']")).click();
 
@@ -74,9 +70,6 @@ public class job_creation {
 
         //Create job
         driver.findElement(By.xpath("//*[@id=\"addForm\"]/div[2]/div/div/button")).click();
-
-
-
 
     }
 }
